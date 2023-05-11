@@ -9,6 +9,12 @@ app = Flask(__name__)
 
 @app.route("/convert", methods=["POST"])
 def convert():
+    print("Solicitud recibida en /convert")
+    
+    # Verificar que la solicitud tenga los campos requeridos
+    if "excelFile" not in request.files or "pdfFile" not in request.files:
+        return "Error: Campos de archivo faltantes", 400
+
     excel_file = request.files["excelFile"]
     pdf_file = request.files["pdfFile"]
     ganancia = float(request.form["ganancia"])
