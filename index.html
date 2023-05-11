@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="logo.png">
+    <title>Conversor Pdf</title>
+</head>
+<body>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <label for="excelFile">Cargue la ruta de su archivo Excel</label>
+        <input class='archivo' type="file" name="excelFile" id="excelFile" accept=".xlsx" required>
+        
+        <label for="pdfFile">Cargue la ruta de su archivo Pdf</label>
+        <input class='archivo' type="file" name="pdfFile" id="pdfFile" accept=".pdf" required>
+
+        <label for="ganancia">¿Cuál es el porcentaje de ganancia?</label>
+        <input type="number" name="ganancia" id="ganancia" min="0" required>
+
+        <label for="newPdfName">¿Qué nombre tendrá el nuevo Pdf?</label>
+        <input type="text" name="newPdfName" id="newPdfName" required>
+        
+        <input class='enviar' type="submit" value="Convertir">
+      </form>
+      <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+*{
+    box-sizing: border-box;
+}
+html, body{
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    background: linear-gradient(coral,red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+form{
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 20px 20px;
+    font-weight: bold;
+}
+form input{
+    display: block;
+    text-align: center;
+    margin: 5px auto;
+    background: coral;
+}
+
+input-button{
+    background-color: red;
+}
+
+.archivo{
+    display: block;
+    text-align: center;
+    margin: 5px auto;
+    background: #ffce00
+}
+form label{
+    display: block;
+    margin: 10px auto;
+}
+
+.enviar{
+    width: 40%;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: bold;    
+    background: #ffce00;
+    border-radius: 10px;
+    border: 2px solid #000000;
+    transition: 1s all;
+    cursor:pointer;
+    margin: 10px auto;
+    color: black;
+}
+
+.enviar:hover{
+    color:white;
+    border: 2px solid #000000;
+    background: red;
+    transform: scale(1.2);
+}
