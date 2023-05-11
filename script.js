@@ -4,12 +4,18 @@ document.getElementById("uploadForm").addEventListener("submit", function(event)
     var form = event.target;
     var formData = new FormData(form);
     
+    console.log("Formulario enviado");
+    
     fetch("/convert", {
         method: "POST",
         body: formData
     })
-    .then(response => response.blob())
+    .then(response => {
+        console.log("Respuesta del servidor:", response);
+        return response.blob();
+    })
     .then(blob => {
+        console.log("Blob recibido:", blob);
         // Crear un enlace de descarga para el nuevo PDF
         var downloadLink = document.createElement("a");
         downloadLink.href = URL.createObjectURL(blob);
