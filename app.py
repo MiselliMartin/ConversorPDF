@@ -14,6 +14,11 @@ def convert():
     ganancia = float(request.form["ganancia"])
     new_pdf_name = request.form["newPdfName"]
     
+    print(f"Archivo de Excel recibido: {excel_file.filename}")
+    print(f"Archivo PDF recibido: {pdf_file.filename}")
+    print(f"Ganancia recibida: {ganancia}")
+    print(f"Nuevo nombre del archivo PDF: {new_pdf_name}")
+    
     df_precios = pd.read_excel(excel_file)
     df_precios = df_precios.rename(columns={'Unnamed: 0': 'Código', 'LOS PRECIOS NO INCLUYEN IVA, PRECIOS SUJETOS A MODIFICACIONES SIN PREVIO AVISO.': 'Precios'})
     df_codigo = df_precios[['Código', 'Precios']]
@@ -24,7 +29,7 @@ def convert():
     
     pdf_data = pdf_file.read()
     pdf_buffer = io.BytesIO(pdf_data)
-    documento = f.open(pdf_buffer)
+    documento = f.open("pdf", pdf_buffer)
 
     regex = r"\d{2,}/\d{2,}|/\d{2,}\b|\d{2,}/\b"
     for numeroDePagina in range(len(documento)):
@@ -45,6 +50,8 @@ def convert():
     new_pdf_buffer = io.BytesIO()
     documento.save(new_pdf_buffer)
     new_pdf_buffer.seek(0)
+    
+    print("Generando archivo PDF nuevo...")
     
     return send_file(new_pdf_buffer, as_attachment=True, attachment_filename=new_pdf_name + ".pdf")
 
