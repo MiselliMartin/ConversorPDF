@@ -1,4 +1,4 @@
-document.getElementById("uploadForm").addEventListener("submit", function(event) {
+document.getElementById("uploadForm").addEventListener("submit", async function(event) {
     event.preventDefault();
     
     var form = event.target;
@@ -7,23 +7,25 @@ document.getElementById("uploadForm").addEventListener("submit", function(event)
     console.log("Formulario enviado");
     console.log("Datos del formulario:", Object.fromEntries(formData));
     
-    fetch("/convert", {
-        method: "POST",
-        body: formData
-    })
-    .then(response => {
+    try {
+        const response = await fetch("/convert", {
+            method: "POST",
+            body: formData
+        });
+
         console.log("Respuesta del servidor:", response);
-        return response.blob();
-    })
-    .then(blob => {
+
+        const blob = await response.blob();
         console.log("Blob recibido:", blob);
+
         // Crear un enlace de descarga para el nuevo PDF
         var downloadLink = document.createElement("a");
         downloadLink.href = URL.createObjectURL(blob);
         downloadLink.download = form.elements.newPdfName.value + ".pdf";
         downloadLink.click();
-    })
-    .catch(error => {
+    } catch (error) {
         console.error("Error:", error);
-    });
+    }
+});
+
 });
