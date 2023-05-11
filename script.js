@@ -27,5 +27,3 @@ document.getElementById("uploadForm").addEventListener("submit", async function(
         console.error("Error:", error);
     }
 });
-
-});
