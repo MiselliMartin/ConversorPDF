@@ -24,7 +24,7 @@ def convert():
     
     pdf_data = pdf_file.read()
     pdf_buffer = io.BytesIO(pdf_data)
-    documento = f.open("pdf", pdf_buffer)
+    documento = f.open(pdf_buffer)
 
     regex = r"\d{2,}/\d{2,}|/\d{2,}\b|\d{2,}/\b"
     for numeroDePagina in range(len(documento)):
