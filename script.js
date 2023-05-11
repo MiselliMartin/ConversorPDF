@@ -5,6 +5,7 @@ document.getElementById("uploadForm").addEventListener("submit", function(event)
     var formData = new FormData(form);
     
     console.log("Formulario enviado");
+    console.log("Datos del formulario:", Object.fromEntries(formData));
     
     fetch("/convert", {
         method: "POST",
