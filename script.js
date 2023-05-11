@@ -8,7 +8,7 @@ document.getElementById("uploadForm").addEventListener("submit", async function(
     console.log("Datos del formulario:", Object.fromEntries(formData));
     
     try {
-        const response = await fetch("/convert", {
+        const response = await fetch("http://127.0.0.1:5000/convert", {
             method: "POST",
             body: formData
         });
