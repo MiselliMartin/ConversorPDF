@@ -9,7 +9,7 @@ document.getElementById("uploadForm").addEventListener("submit", async function(
     
     try {
         const response = await fetch("http://127.0.0.1:5000/convert", {
-            method: "GET",
+            method: "POST",
             body: formData
         });
 

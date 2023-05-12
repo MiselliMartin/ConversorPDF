@@ -1,13 +1,18 @@
 from flask import Flask, request, send_file
+from flask_cors import CORS
+from werkzeug.wrappers import Response
 import fitz as f
 import re
 import pandas as pd
 import math
 import io
 
-app = Flask(__name__)
 
-@app.route("/convert", methods=["GET"]) #POST
+
+
+app = Flask(__name__)
+CORS(app)
+@app.route("/convert", methods=["POST"]) #POST
 def convert():
     print("Solicitud recibida en /convert")
     
@@ -59,7 +64,11 @@ def convert():
     
     print("Generando archivo PDF nuevo...")
     
-    return send_file(new_pdf_buffer, as_attachment=True, attachment_filename=new_pdf_name + ".pdf")
+    response = Response(new_pdf_buffer.getvalue(), mimetype="application/pdf")
+    response.headers.set("Content-Disposition", "attachment", filename=new_pdf_name + ".pdf")
+    
+    return response
+
 
 if __name__ == "__main__":
     app.run()
