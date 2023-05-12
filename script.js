@@ -28,7 +28,7 @@ document.getElementById("uploadForm").addEventListener("submit", async function(
     console.log("Datos del formulario:", Object.fromEntries(formData));
     
     try {
-        const response = await fetch("http://0.0.0.0:10000/convert", {
+        const response = await fetch("https://0.0.0.0:10000/convert", {
             method: "POST",
             body: formData
         });
