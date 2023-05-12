@@ -7,7 +7,7 @@ import io
 
 app = Flask(__name__)
 
-@app.route("/convert", methods=["POST"])
+@app.route("/convert", methods=["GET"]) #POST
 def convert():
     print("Solicitud recibida en /convert")
     
