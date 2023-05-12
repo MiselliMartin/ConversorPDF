@@ -12,9 +12,12 @@ import io
 
 app = Flask(__name__)
 CORS(app)
+
+@app.after_request
 def add_cors_header(response):
     response.headers['Access-Control-Allow-Origin'] = 'https://shimmering-peony-4f5b77.netlify.app'
     return response
+
 @app.route("/convert", methods=["POST"]) #POST
 def convert():
     print("Solicitud recibida en /convert")
