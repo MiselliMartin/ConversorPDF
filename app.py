@@ -77,4 +77,4 @@ def convert():
 
 
 if __name__ == "__main__":
-    app.run()(timeout=600)
+    app.run()(timeout=300)
