@@ -1,17 +1,32 @@
 *{
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 html, body{
     height: 100%;
     width: 100%;
 }
 
+h1{
+    font-weight: bold;
+    font-size: xx-large;
+    display: block;
+}
+
 body{
-    background: linear-gradient(coral,red);
+    margin: 0;
+    background-image: url('bgcalisma-1.jpg');
+    background-size: cover;
+    backdrop-filter: brightness(0.7);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow-x: hidden;
 }
+
+
+
 form{
     text-align: center;
     border: 2px solid black;
@@ -23,7 +38,7 @@ form input{
     display: block;
     text-align: center;
     margin: 5px auto;
-    background: coral;
+    background: rgb(169, 225, 230);
 }
 
 input-button{
@@ -34,11 +49,15 @@ input-button{
     display: block;
     text-align: center;
     margin: 5px auto;
-    background: #ffce00
+    background: #00bcd4(252, 227, 84);
 }
 form label{
     display: block;
     margin: 10px auto;
+}
+
+.oculto{
+    display: none;
 }
 
 .enviar{
@@ -46,7 +65,7 @@ form label{
     padding: 15px 0;
     font-size: 18px;
     font-weight: bold;    
-    background: #ffce00;
+    background: #00bcd4;
     border-radius: 10px;
     border: 2px solid #000000;
     transition: 1s all;
@@ -56,8 +75,14 @@ form label{
 }
 
 .enviar:hover{
-    color:white;
+    color:rgb(0, 0, 0);
     border: 2px solid #000000;
-    background: red;
+    background-color: rgba(0, 188, 212, 0.8);
     transform: scale(1.2);
+}
+
+.enviar:active{
+    background-color: rgba(0, 188, 212, 0.5);
+    transition: 0s;
+    border: 2px solid #ffffff;
 }

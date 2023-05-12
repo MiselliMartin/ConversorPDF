@@ -1,3 +1,23 @@
+// Obtén los elementos del formulario y el botón de envío
+const uploadForm = document.getElementById('uploadForm');
+const inputs = uploadForm.querySelectorAll('input');
+const submitButton = uploadForm.querySelector('.enviar');
+
+// Agrega un evento 'input' a cada campo de entrada
+inputs.forEach(input => {
+  input.addEventListener('input', () => {
+    // Verifica si todos los campos tienen contenido
+    const allInputsFilled = Array.from(inputs).every(input => input.value.trim() !== '');
+    
+    // Si todos los campos están llenos, muestra el botón de envío
+    if (allInputsFilled) {
+      submitButton.classList.remove('oculto');
+    } else {
+      submitButton.classList.add('oculto');
+    }
+  });
+});
+
 document.getElementById("uploadForm").addEventListener("submit", async function(event) {
     event.preventDefault();
     
