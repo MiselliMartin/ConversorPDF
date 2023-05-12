@@ -15,11 +15,9 @@ CORS(app)
 
 @app.after_request
 def add_cors_header(response):
-    response.headers['Access-Control-Allow-Origin'] = 'https://benevolent-rolypoly-23a200.netlify.app/'
-    response.headers.add('Access-Control-Allow-Origin', 'https://benevolent-rolypoly-23a200.netlify.app') #EN PRUEBA
-    response.headers.add('Access-Control-Allow-Methods', 'POST') #EN PRUEBA
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type') #EN PRUEBA
-
+    response.headers['Access-Control-Allow-Origin'] = 'https://benevolent-rolypoly-23a200.netlify.app'
+    response.headers.add('Access-Control-Allow-Methods', 'POST')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type') 
     return response
 
 @app.route("/convert", methods=["POST"]) #POST
