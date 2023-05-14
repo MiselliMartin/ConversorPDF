@@ -13,14 +13,6 @@ import io
 app = Flask(__name__)
 CORS(app)
 
-@app.after_request
-def add_cors_headers(response):
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-    response.headers.add('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS')
-    return response
-
-
 @app.route("/convert", methods=["POST"]) #POST
 def convert():
     print("Solicitud recibida en /convert")
@@ -70,14 +62,10 @@ def convert():
     new_pdf_buffer = io.BytesIO()
     documento.save(new_pdf_buffer)
     new_pdf_buffer.seek(0)
-    
-    print("Generando archivo PDF nuevo...")
-    
-    response = Response(new_pdf_buffer.getvalue(), mimetype="application/pdf")
-    response.headers.set("Content-Disposition", "attachment", filename=new_pdf_name + ".pdf")
-    
-    return response
 
+    print("Generando archivo PDF nuevo...")
+
+    return send_file(new_pdf_buffer, attachment_filename=f"{new_pdf_name}.pdf", as_attachment=True)
 
 if __name__ == "__main__":
     app.run()
