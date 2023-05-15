@@ -68,5 +68,5 @@ def convert():
     return send_file(new_pdf_buffer, attachment_filename=f"{new_pdf_name}.pdf", as_attachment=True)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0', port=10000, workers=4, timeout=600)
 
