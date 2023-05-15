@@ -2,6 +2,7 @@ Flask
 flask-cors
 Flask-Cors
 Flask-CORS
+flask_cors
 PyMuPDF
 pandas
 gunicorn
