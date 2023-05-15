@@ -11,7 +11,11 @@ import io
 
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "https://benevolent-rolypoly-23a200.netlify.app"}})
+cors = CORS(app, resources={r'/api/*': {'origins':'*'}})
+
+@app.route('/')
+def home():
+    return "Hello World"
 
 @app.route("/convert", methods=["POST"]) #POST
 def convert():
