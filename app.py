@@ -69,7 +69,9 @@ def convert():
 
     print("Generando archivo PDF nuevo...")
 
-    return send_file(new_pdf_buffer, attachment_filename=f"{new_pdf_name}.pdf", as_attachment=True)
+    response = Response(new_pdf_buffer.getvalue(), mimetype="application/pdf")
+    response.headers.set("Content-Disposition", "attachment", filename=new_pdf_name + ".pdf")
+    return response
 
 if __name__ == "__main__":
     app.run()
