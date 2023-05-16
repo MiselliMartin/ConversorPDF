@@ -1,10 +1,12 @@
+--upgrade pip
 Flask
 flask-cors
 Flask-Cors
 Flask-CORS
 flask_cors
+openpyxl
 PyMuPDF
 pandas
 gunicorn
 werkzeug
-openpyxl
+
