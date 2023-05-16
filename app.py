@@ -71,7 +71,9 @@ def convert():
 
     response = Response(new_pdf_buffer.getvalue(), mimetype="application/pdf")
     response.headers.set("Content-Disposition", "attachment", filename=new_pdf_name + ".pdf")
+    response.headers.set("Access-Control-Allow-Origin", "*")  # Permitir acceso desde cualquier dominio
     return response
+
 
 if __name__ == "__main__":
     app.run()
