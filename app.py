@@ -1,4 +1,4 @@
-from flask import Flask, request, send_file
+from flask import Flask, request, make_response, send_file
 from flask_cors import CORS
 from werkzeug.wrappers import Response
 import fitz as f
@@ -69,17 +69,12 @@ def convert():
 
     print("Generando archivo PDF nuevo...")
 
-    response = Response(
-    new_pdf_buffer.getvalue(),
-    mimetype="application/pdf",
-    headers={
-        "Content-Disposition": f"attachment; filename={new_pdf_name}.pdf",
-        "Access-Control-Allow-Origin": "*"
-    }
-    )
+    response = make_response(new_pdf_buffer.getvalue())
+    response.headers['Content-Type'] = 'application/pdf'
+    response.headers['Content-Disposition'] = f'attachment; filename={new_pdf_name}.pdf'
+    response.headers['Access-Control-Expose-Headers'] = 'Content-Disposition'
 
     return response
-
 
 if __name__ == "__main__":
     app.run()
