@@ -1,5 +1,5 @@
 from flask import Flask, request, send_file
-from flask_cors import CORS, cors_origin
+from flask_cors import CORS, cross_origin
 from werkzeug.wrappers import Response
 import fitz as f
 import re
