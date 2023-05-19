@@ -11,7 +11,7 @@ import io
 
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"*": {'origins':'*'}})
+CORS(app)
 
 @app.route('/')
 def home():
