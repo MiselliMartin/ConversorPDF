@@ -1,5 +1,5 @@
 from flask import Flask, request, send_file
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 from werkzeug.wrappers import Response
 import fitz as f
 import re
@@ -11,13 +11,13 @@ import io
 
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"*": {'origins':'*'}})
 
 @app.route('/')
 def home():
     return "Hello World"
 
 @app.route("/convert", methods=["POST"]) #POST
-@cross_origin()
 def convert():
     print("Solicitud recibida en /convert")
     
@@ -69,9 +69,15 @@ def convert():
 
     print("Generando archivo PDF nuevo...")
 
-    response = Response(new_pdf_buffer.getvalue(), mimetype="application/pdf")
-    response.headers.set("Content-Disposition", "attachment", filename=new_pdf_name + ".pdf")
-    
+    response = Response(
+    new_pdf_buffer.getvalue(),
+    mimetype="application/pdf",
+    headers={
+        "Content-Disposition": f"attachment; filename={new_pdf_name}.pdf",
+        "Access-Control-Allow-Origin": "*"
+    }
+    )
+
     return response
 
 
