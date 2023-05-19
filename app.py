@@ -11,7 +11,6 @@ import io
 
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"*": {'origins':'*'}})
 
 @app.route('/')
 def home():
@@ -72,9 +71,7 @@ def convert():
 
     response = Response(new_pdf_buffer.getvalue(), mimetype="application/pdf")
     response.headers.set("Content-Disposition", "attachment", filename=new_pdf_name + ".pdf")
-    response.headers.set("Access-Control-Allow-Origin", "*")  # Permitir acceso desde cualquier dominio
-    response.headers.set("Access-Control-Allow-Headers", "Content-Type")
-
+    
     return response
 
 
